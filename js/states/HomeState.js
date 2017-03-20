@@ -2,6 +2,10 @@ var Knock = Knock || {};
 
 Knock.HomeState = {
     create: function() {
+        this.scale.maxWidth = this.game.width;
+        this.scale.maxHeight = this.game.height;
+        this.scale.pageAlignHorizontally = true;
+        this.scale.pageAlignVertically = true;
         //floor
         //this.background = this.add.tileSprite(0,
                                               //0,
