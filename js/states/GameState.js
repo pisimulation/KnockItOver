@@ -176,9 +176,9 @@ Knock.GameState = {
     },
     
     createTimer: function(totalTime){
-        this.timeremaining = this.game.add.text(20, 20, "Time remaining", {font: "18px Arial", fill: "#fff"}); 
+        this.timeremaining = this.game.add.text(20, 20, "Time remaining", {font: "18px Impact", fill: "#fff"}); 
         this.timeoutLabel = 
-        this.game.add.text(60, 40, totalTime, {font: "30px Arial", fill: "#fff"}); 
+        this.game.add.text(60, 40, totalTime, {font: "30px Impact", fill: "#fff"}); 
         this.timeoutLabel.anchor.setTo(0.5, 0);
         this.timeoutLabel.align = 'center';
         this.timeremaining.fixedToCamera = true
@@ -214,8 +214,8 @@ Knock.GameState = {
     
     gameOver: function() {
         this.game.paused = true;
-        this.game.add.text(this.player.body.x - 250, this.player.body.y, "You knocked " + this.knockedNum, {font: "40px Arial", fill: "#fff"});
-        this.game.add.text(this.player.body.x - 250, this.player.body.y + 40, 'ENTER to restart', { font: '30px Arial', fill: '#007', fontWeight: 'bold'});
+        this.game.add.text(this.player.body.x - 250, this.player.body.y, "You knocked " + this.knockedNum, {font: "40px Impact", fill: "#000"});
+        this.game.add.text(this.player.body.x - 250, this.player.body.y + 40, 'ENTER to restart', { font: '30px Impact', fill: '#007', fontWeight: 'bold'});
         var enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enterKey.onDown.add(function() {
             location.reload();
