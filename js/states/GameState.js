@@ -17,7 +17,7 @@ Knock.GameState = {
         this.WIDTH = this.game.world.width;
         this.HEIGHT = this.game.world.height;
         this.THINGFREQ = 15;
-        this.DURATION = 30;
+        this.DURATION = 10;
         
     },
     
@@ -214,6 +214,12 @@ Knock.GameState = {
     
     gameOver: function() {
         this.game.paused = true;
-        this.game.add.text(this.player.body.x - 50, this.player.body.y - 80, "You knocked " + this.knockedNum, {font: "40px Arial", fill: "#fff"});
+        this.game.add.text(this.player.body.x - 250, this.player.body.y, "You knocked " + this.knockedNum, {font: "40px Arial", fill: "#fff"});
+        this.game.add.text(this.player.body.x - 250, this.player.body.y + 40, 'ENTER to restart', { font: '30px Arial', fill: '#007', fontWeight: 'bold'});
+        var enterKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enterKey.onDown.add(function() {
+            location.reload();
+            
+        }, this);
     }
 }
