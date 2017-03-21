@@ -40,6 +40,8 @@ Knock.GameState = {
         this.game.camera.follow(this.player);
         this.player.backward = false;
         
+        
+        //ledges
         var platformData = [
           {"x": 140, "y": 200},
           //{"x": 300, "y": 140},
@@ -59,11 +61,30 @@ Knock.GameState = {
         this.platforms.setAll('scale.x', 60);
         this.platforms.setAll('scale.y', 10);
         
+        //things
+        this.things = this.game.add.group();
+        this.things.enableBody = true;
+        this.things.physicsBodyType = Phaser.Physics.ARCADE;
+
+        for (var i = 0; i < 10; i++)
+        {
+            var thing = this.things.create(0 + i * 48,50, 'purple');
+
+            //This allows your sprite to collide with the world bounds like they were rigid objects
+            thing.body.collideWorldBounds=true;
+            thing.body.gravity.x = 0;
+            thing.body.gravity.y = 100 + Math.random() * 100;
+            thing.body.bounce.setTo(0.1, 0.1);
+            thing.knocked = false;
+        }
+        
     },
     
     update: function() {
         this.game.world.setBounds(0,0,-this.player.xChange,this.game.width-200);
         this.game.physics.arcade.collide(this.player, this.platforms);
+        this.game.physics.arcade.collide(this.things, this.platforms, null, this.knocked, this);
+        this.game.physics.arcade.collide(this.player, this.things, this.knock, null, this);
         this.player.body.velocity.x = 0;
         
         if(this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
@@ -94,4 +115,13 @@ Knock.GameState = {
             }
         }
     },
+    
+    knock: function(player, thing) {
+        thing.knocked = true;
+        thing.body.velocity.x = 0;
+    },
+    
+    knocked: function(thing, platform) {
+        return thing.knocked ? false : true;
+    }
 }
