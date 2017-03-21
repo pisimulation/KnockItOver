@@ -17,7 +17,7 @@ Knock.GameState = {
         this.WIDTH = this.game.world.width;
         this.HEIGHT = this.game.world.height;
         this.THINGFREQ = 15;
-        this.DURATION = 10;
+        this.DURATION = 30;
         
     },
     
