@@ -4,7 +4,7 @@ Game about cat knocking things over
 
 ## Play
 
-https://coconutpi.github.io/KnockItOver/
+https://pisimulation.github.io/KnockItOver/
 
 * Use arrow left and right keys to move, spacebar to jump. 
 * When you touch the object, it will fall with gravity.
